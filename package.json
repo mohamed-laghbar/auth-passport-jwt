@@ -1,0 +1,24 @@
+{
+  "name": "auth-passport-jwt",
+  "version": "1.0.0",
+  "description": "auth-passport-jwt: A streamlined Node.js module for implementing secure authentication using Passport.js and JWT. It offers easy setup, customizable JWT token handling, and robust security for web and API applications. Perfect for developers seeking a quick and reliable auth solution.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohamed-laghbar/auth-passport-jwt.git"
+  },
+  "keywords": [
+    "Passport",
+    "JWT",
+    "Strategy"
+  ],
+  "author": "Mohamed Laghbar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohamed-laghbar/auth-passport-jwt/issues"
+  },
+  "homepage": "https://github.com/mohamed-laghbar/auth-passport-jwt#readme"
+}

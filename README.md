@@ -13,23 +13,24 @@
 ```
 npm install auth-passport-jwt
 ```
+
+When you initialize our package, it also automatically initializes and configures an Express application for you. The configured Express app includes the following middlewares:
+
+`bodyParser.urlencoded`: Used for parsing URL-encoded request bodies.
+`bodyParser.json()` : Used for parsing JSON request bodies.
+`express-session`: Used for session management.
+The session middleware is configured to use a secret from the environment variables `SESSION_SECRET`. In production environments, it sets the session cookie to be secure.
+
 ## Usage
 
 ### Initializing Passport JWT Authentication
 
-To initialize Passport with JWT authentication in your Express application:
+Once initialized, this package sets up JWT authentication for your routes. It does the following:
 
- ```javascript 
-const express = require("express");
-const initPassportAuth = require("auth-passport-jwt").initPassportAuth;
-
-const app = express();
-const secretKey = process.env.JWT_SECRET_KEY; // Ensure this is set in your environment
-
-initPassportAuth(app, secretKey);
-
-// Define routes...
-```
+- Parses JWT tokens from the Authorization header.
+- Verifies the tokens using the provided secret key.
+- On successful authentication, the JWT payload is attached to the req.user object.
+- On failure (invalid token or error), the user is redirected to the `/login` route.
 
 
 ## Protecting Routes
@@ -50,15 +51,21 @@ app.get("/protected-route", (req, res) => {
  ```javascript 
 const { generateToken } = require("auth-passport-jwt");
 
-const token = generateToken({ userId: "12345" }, secretKey);
+// secret key is already set from your .env file
+
+const token = generateToken({ userId: "12345" });
 ```
 
 ## Verifying a JWT token:
 
-```
+We automatically set the secret_key to `JWT_SECRET_KEY` from the `.env` file. Make sure to set it under that name.
+
+```javascript
 const { verifyToken } = require("auth-passport-jwt");
 
-const payload = verifyToken(token, secretKey);
+// secret key is already set from your .env file
+
+const payload = verifyToken(token);
 if (payload) {
   // Token is valid
 } else {

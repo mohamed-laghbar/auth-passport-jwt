@@ -10,7 +10,7 @@
 
 ## Installation
 
-```bash
+``` 
 npm install auth-passport-jwt
 
 ## Usage
@@ -19,7 +19,7 @@ npm install auth-passport-jwt
 
 To initialize Passport with JWT authentication in your Express application:
 
-```bash
+``` 
 const express = require("express");
 const initPassportAuth = require("auth-passport-jwt").initPassportAuth;
 
@@ -35,7 +35,7 @@ initPassportAuth(app, secretKey);
 
 To protect routes and redirect unauthenticated users:
 
-```bash
+``` 
 app.get("/protected-route", (req, res) => {
   // Access user info with req.user
   res.json({ message: "Protected data", user: req.user });
@@ -46,7 +46,7 @@ app.get("/protected-route", (req, res) => {
 
 ### Generating a JWT token:
 
-```bash
+``` 
 const { generateToken } = require("auth-passport-jwt");
 
 const token = generateToken({ userId: "12345" }, secretKey);
@@ -54,7 +54,7 @@ const token = generateToken({ userId: "12345" }, secretKey);
 
 ## Verifying a JWT token:
 
-```bash
+``` 
 const { verifyToken } = require("auth-passport-jwt");
 
 const payload = verifyToken(token, secretKey);
